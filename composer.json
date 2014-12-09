@@ -1,9 +1,7 @@
 {
-	"name": "laravel/laravel",
-	"description": "The Laravel Framework.",
-	"keywords": ["framework", "laravel"],
+	"name": "valorin/simplestatus",
+	"description": "Quick and dirty status page for checking connected databases, event queues, and cache is working.",
 	"license": "MIT",
-	"type": "project",
 	"require": {
 		"laravel/framework": "4.2.*",
 		"pda/pheanstalk": "~2.0"
