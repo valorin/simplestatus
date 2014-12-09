@@ -54,10 +54,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'forge',
-			'username'  => 'forge',
-			'password'  => '',
+			'host'      => getenv('MYSQL_HOSTNAME'),
+			'database'  => getenv('MYSQL_DATABASE'),
+			'username'  => getenv('MYSQL_USERNAME'),
+			'password'  => getenv('MYSQL_PASSWORD'),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
@@ -65,23 +65,23 @@ return array(
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
-			'host'     => 'localhost',
-			'database' => 'forge',
-			'username' => 'forge',
-			'password' => '',
+			'host'     => getenv('PGSQL_HOSTNAME'),
+			'database' => getenv('PGSQL_DATABASE'),
+			'username' => getenv('PGSQL_USERNAME'),
+			'password' => getenv('PGSQL_PASSWORD'),
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',
 		),
 
-		'sqlsrv' => array(
-			'driver'   => 'sqlsrv',
-			'host'     => 'localhost',
-			'database' => 'database',
-			'username' => 'root',
-			'password' => '',
-			'prefix'   => '',
-		),
+		// 'sqlsrv' => array(
+		// 	'driver'   => 'sqlsrv',
+		// 	'host'     => 'localhost',
+		// 	'database' => 'database',
+		// 	'username' => 'root',
+		// 	'password' => '',
+		// 	'prefix'   => '',
+		// ),
 
 	),
 
