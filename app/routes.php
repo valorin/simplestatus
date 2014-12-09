@@ -44,7 +44,7 @@ Route::get('status', function()
 			$status[] = "{$connection}: counter missmatch: {$counter} != {$row->counter}";
 		}
 
-		if ($counter > $row->queued + 2) {
+		if ($counter > $row->queued + 3) {
 			$status[] = "{$connection}: queued missmatch: {$counter} > {$row->queued} + 2";
 		}
 
