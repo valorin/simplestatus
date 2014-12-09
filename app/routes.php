@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/', function()
+Route::get('/', function() {
+	return View::make('alpha');
+});
+
+Route::get('status', function()
 {
 	// Set variables
 	$counter = null;
