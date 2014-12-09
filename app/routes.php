@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function() {
-	return View::make('alpha');
+	return View::make('index');
 });
 
 Route::get('status', function()
