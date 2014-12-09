@@ -26,6 +26,11 @@ Route::get('/', function()
 			$counter = $row->counter;
 		}
 
+		$cacheKey = 'counter.'.$connection;
+		if (!Cache::has($cacheKey)) {
+			Cache::forever($cacheKey, $counter);
+		}
+
 		if ($counter != $row->counter) {
 			$status[] = "{$connection}: raw counter missmatch: {$counter} != {$row->counter}";
 		}
@@ -38,6 +43,10 @@ Route::get('/', function()
 			$status[] = "{$connection}: counter vs queued missmatch: {$row->counter} != {$row->queued}";
 		}
 
+		if (Cache::get($cacheKey) != $counter) {
+			$status[] = "{$connection}: counter vs cache missmatch: {$row->counter} != ".Cache::get($cacheKey);
+		}
+
 		$nextCounter = $counter + 1;
 
 		DB::connection($connection)->table('status')->whereStatus('status')->update(['counter' => $nextCounter]);
@@ -48,6 +57,8 @@ Route::get('/', function()
 
 			$job->delete();
 		});
+
+		Cache::forever($cacheKey, $nextCounter);
 	}
 
 	$output = "<pre>";
