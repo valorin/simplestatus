@@ -58,6 +58,7 @@ Route::get('status', function()
 
 		try {
 			Queue::push(function($job) use ($connection, $nextCounter) {
+				DB::reconnect($connection);
 				DB::connection($connection)->table('status')->whereStatus('status')->update(['queued' => $nextCounter]);
 				$job->delete();
 			});
